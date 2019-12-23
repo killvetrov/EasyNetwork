@@ -82,20 +82,20 @@ public class MultipartTask extends BaseTask {
     }
 
     protected void addFormField(NKeyValueModel model) {
-        writer.append("--").append(boundary).append(LINE_END);
+        writer.append(LINE_END).append("--").append(boundary).append(LINE_END);
         writer.append("Content-Disposition: form-data; name=\"").append(model.getKey()).append("\"")
                 .append(LINE_END);
         writer.append("Content-Type: text/plain; charset=" + charset).append(
                 LINE_END);
         writer.append(LINE_END);
-        writer.append(model.getValue()).append(LINE_END);
+        writer.append(model.getValue());
         writer.flush();
     }
 
     protected void addFilePart(NKeyValueFileModel model)
             throws IOException {
         String fileName = model.getValue().getName();
-        writer.append("--").append(boundary).append(LINE_END);
+        writer.append(LINE_END).append("--").append(boundary).append(LINE_END);
         writer.append("Content-Disposition: form-data; name=\"")
                 .append(model.getKey()).append("\"; filename=\"").append(fileName).append("\"")
                 .append(LINE_END);
