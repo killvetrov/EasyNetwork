@@ -88,7 +88,7 @@ public class MultipartTask extends BaseTask {
         writer.append("Content-Type: text/plain; charset=" + charset).append(
                 LINE_END);
         writer.append(LINE_END);
-        writer.append(model.getValue()).append(LINE_END);
+        writer.append(model.getValue());
         writer.flush();
     }
 
